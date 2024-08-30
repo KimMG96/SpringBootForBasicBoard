@@ -9,4 +9,37 @@
         ]]>
     </select>
 
+    <select id="selectUserCountByUserId" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM userInfo
+        WHERE uiId=#{uiId}
+        ]]>
+    </select>
+
+
+    <insert id="insertUserInfo" parameterMap="java.util.Map">
+        <![CDATA[
+        INSERT INTO userInfo
+            (uiId, uiPwd, uiName, uiPhone, uiEmail, uiCrtDate, uiState, uiAuth)
+        VALUES
+            (#{uiId}, #{uiPwd}, #{uiName}, #{uiPhone},#{uiCrtDate}, 1, 1)
+        ]]>
+        <selectKey resultType="int" order="AFTER" keyProperty="uiIdx">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <insert id="insertUseHistoryInfo" parameterMap="java.util.Map">
+        <![CDATA[
+        INSERT INTO userHistory
+            (uhCrtDate, uiIdx, uhDetail)
+        VALUES
+            (#{uhCrtDate}, #{uiIdx}, #{uhDetail})
+        ]]>
+    </insert>
+
+
+
+
 </mapper>

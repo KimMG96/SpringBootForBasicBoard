@@ -12,8 +12,10 @@ public interface AuthMapper {
 
     public List<UserVO> selectAllUsers() throws Exception;
 
-    public int selectAllusersCount() throws Exception;
+    public int selectUserCountByUserId(String uiId) throws Exception;
 
-    public void insertUserInfo(Map<String, Object> inputData) throws Exception;
+    public int insertUserInfo(Map<String, Object> signUpData) throws Exception;
+
+    public void insertUseHistoryInfo(Map<String, Object> HistoryData) throws Exception;
 
 }
