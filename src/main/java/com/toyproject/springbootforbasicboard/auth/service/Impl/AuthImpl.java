@@ -22,7 +22,7 @@ public class AuthImpl implements AuthService {
     @Override
     public Map<String, Object> signUpUserData(Map<String, Object> inputData) throws Exception {
         Map<String, Object> outputData = inputData;
-
+        System.out.println("result : " + inputData.get("uiId"));
         int duplicateCnt = authMapper.selectUserCountByUserId(inputData.get("uiId").toString());
         if(duplicateCnt > 0){
             outputData.put("RESULT_CODE", "DUPLICATE_ID");

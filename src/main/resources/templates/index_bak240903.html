@@ -2,36 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>SpringBootForBasicBoardPage</title>
-<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <script type="text/javascript" src="/lib/jquery-1.11.2.min.js"></script>
-<body>
 <script type="text/javascript" th:src="@{/js/index.js}"></script>
 <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+<body>
     <div class="container">
         <!-- Sign Up -->
         <div class="container__form container--signup">
-            <div class="form sign_up_form" id="form1">
+            <form action="#" class="form sign_up_form" id="form1">
                 <h2 class="form__title">Sign Up</h2>
                 <input type="text" placeholder="ID" class="input" id="sign_up_id" autocomplete="off"/>
                 <input type="password" placeholder="Password" class="input" id="sign_up_pwd" autocomplete="off"/>
                 <input type="text" placeholder="Name" class="input" id="sign_up_name" autocomplete="off"/>
-                <input type="text" placeholder="Phone('010-0000-0000')" class="input" id="sign_up_phone" autocomplete="off"/>
-                <input type="text" placeholder="Email('test@test.com')" class="input" id="sign_up_email" autocomplete="off"/>
+                <input type="text" placeholder="Phone (with '-')" class="input" id="sign_up_phone" autocomplete="off"/>
+                <input type="text" placeholder="Email" class="input" id="sign_up_email" autocomplete="off"/>
                 <button class="btn" onclick="sign_up_user()">Sign Up</button>
-            </div>
+            </form>
         </div>
 
         <!-- Sign In -->
         <div class="container__form container--signin">
-            <div class="form sign_in_form" id="form2">
+            <form action="#" class="form sign_in_form" id="form2">
                 <h2 class="form__title">Sign In</h2>
                 <input type="text" placeholder="ID" class="input"/>
                 <input type="password" placeholder="Password" class="input" />
                 <a href="#" class="link">Forgot your password?</a>
-                <button class="btn" onclick="ajax_test()">Sign In</button>
-            </div>
+                <button class="btn">Sign In</button>
+            </form>
         </div>
 
         <!-- Overlay -->

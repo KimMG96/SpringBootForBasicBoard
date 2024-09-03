@@ -9,7 +9,7 @@
         ]]>
     </select>
 
-    <select id="selectUserCountByUserId" resultType="int">
+    <select id="selectUserCountByUserId" parameterType="String" resultType="int">
         <![CDATA[
         SELECT COUNT(*)
         FROM userInfo
