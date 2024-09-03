@@ -17,7 +17,7 @@ public class AuthController {
     @Autowired
     AuthService authService;
 
-    @RequestMapping(value = "/sign_up", method = {RequestMethod.POST})
+    @RequestMapping(value = "/sign-up", method = {RequestMethod.POST})
     @ResponseBody
     public Map<String, Object> signUpUser(@RequestBody Map<String, Object> inputData) throws Exception {
         Map<String, Object> resultMap = new HashMap<>();
@@ -32,4 +32,6 @@ public class AuthController {
         return resultMap;
 
     }
+
+
 }
