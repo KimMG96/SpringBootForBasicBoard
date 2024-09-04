@@ -79,7 +79,7 @@ public class AuthImpl implements AuthService {
         int cnt = 0;
         try {
             cnt = authMapper.selectUserCountByUserIdWithPwd(inputData);
-            if(cnt <= 1) {
+            if(cnt != 1) {
                 outputData.put("RESULT_CODE", "NONEXISTENT_USER");
                 return outputData;
             }
@@ -101,12 +101,12 @@ public class AuthImpl implements AuthService {
         Timestamp crtDate = new Timestamp(System.currentTimeMillis());
         historyData.put("uhCrtDate", crtDate);
         historyData.put("uiIdx", userInfoData.get("uiIdx"));
-        historyData.put("uhDetail", "USER_LOGIN");
+        historyData.put("uhDetail", "USER_SIGNIN");
 
         // 로그인 DB로그 생성
         try {
             // INSERT
-            authMapper.insertUseHistoryInfo(inputData);
+            authMapper.insertUseHistoryInfo(historyData);
         } catch (Exception e) {
             e.printStackTrace();
         }
