@@ -5,19 +5,22 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Mapper
 public interface AuthMapper {
 
-    public int selectAllUsersCount() throws Exception;
+    int selectAllUsersCount() throws Exception;
 
-    public List<UserVO> selectAllUsers() throws Exception;
+    List<UserVO> selectAllUsers() throws Exception;
 
-    public int selectUserCountByUserId(String uiId) throws Exception;
+    int selectUserCountByUserId(String uiId) throws Exception;
 
-    public int insertUserInfo(Map<String, Object> signUpData) throws Exception;
+    int selectUserCountByUserIdWithPwd(Map<String, Object> signInData) throws Exception;
 
-    public void insertUseHistoryInfo(Map<String, Object> HistoryData) throws Exception;
+    Map<String, Object> selectUserInfoByUserIdUserPwd(Map<String, Object> signInData) throws Exception;
+
+    void insertUserInfo(Map<String, Object> signUpData) throws Exception;
+
+    void insertUseHistoryInfo(Map<String, Object> HistoryData) throws Exception;
 
 }

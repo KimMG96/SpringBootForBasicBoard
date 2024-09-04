@@ -26,6 +26,17 @@
         ]]>
     </select>
 
+    <select id="selectUserCountByUserIdWithPwd" parameterType="java.util.Map" resultType="int">
+        <![CDATA[
+        SELECT
+            COUNT(*)
+        FROM userInfo
+        WHERE 1=1
+            AND uiId = #{uiId}
+            AND uiPwd = #{uiPwd}
+        ]]>
+    </select>
+
     <select id="selectUserInfoByUserIdUserPwd" parameterType="java.util.Map" resultType="java.util.Map">
         <![CDATA[
         SELECT
@@ -44,7 +55,7 @@
         VALUES
             (#{uiId}, #{uiPwd}, #{uiName}, #{uiPhone}, #{uiEmail},#{uiCrtDate}, 1, 1)
         ]]>
-        <selectKey resultType="int" order="AFTER" keyProperty="uiIdx">
+        <selectKey resultType="int" keyProperty="uiIdx">
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>

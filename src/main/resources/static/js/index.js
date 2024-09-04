@@ -28,7 +28,30 @@ function sign_in_user() {
         return false;
     }
 
+    var data_val = {
+        "uiId" : $("#sign_in_id").val(),
+        "uiPwd" : $("#sign_in_pwd").val()
+    }
+    console.log(data_val);
 
+    $.ajax({
+        url : "/auth/sign-in",
+        type : "POST",
+        contentType : "application/json",
+        dataType : "JSON",
+        data : JSON.stringify(data_val),
+        success : function(data) {
+            if(data.signInInfo.RESULT_CODE === "NONEXISTENT_USER") {
+                alert("it's non-existent user. check your id or password");
+                $("#sign_in_id").focus();
+            } else if(data.signInInfo.RESULT_CODE === "SUCCESS_SIGNIN") {
+                console.log(data.signInInfo.USER_INFO);
+            }
+        },
+        error : function(err) {
+            console.log(err);
+        }
+    })
 
 }
 
@@ -85,13 +108,12 @@ function sign_up_user(){
         dataType : "JSON",
         data : JSON.stringify(data_val),
         success : function(data) {
+            console.log(data.signUpInfo.RESULT_CODE);
             if(data.signUpInfo.RESULT_CODE === "DUPLICATE_ID") {
-                console.log(data);
                 alert("ID is duplicate. please check it.");
+                $("sign_up_id").focus();
             } else if(data.signUpInfo.RESULT_CODE === "SUCCESS_SIGNUP") {
-                console.log(data);
                 alert("success sign up. welcome!");
-
                 $(".sign_up_form > input").val("");
                 show_sign_in();
             }

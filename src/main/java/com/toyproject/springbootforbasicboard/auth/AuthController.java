@@ -3,7 +3,6 @@ package com.toyproject.springbootforbasicboard.auth;
 import com.toyproject.springbootforbasicboard.auth.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -38,7 +37,7 @@ public class AuthController {
         Map<String, Object> resultMap = new HashMap<>();
 
         try {
-            resultMap.put("signInfo", authService.signInUserData(inputData));
+            resultMap.put("signInInfo", authService.signInUserData(inputData));
             resultMap.put("response", true);
         } catch (Exception e) {
             System.out.println(e.getMessage());
