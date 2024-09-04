@@ -10,6 +10,8 @@ import java.util.Objects;
 @Mapper
 public interface AuthMapper {
 
+    public int selectAllUsersCount() throws Exception;
+
     public List<UserVO> selectAllUsers() throws Exception;
 
     public int selectUserCountByUserId(String uiId) throws Exception;

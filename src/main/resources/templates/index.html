@@ -27,8 +27,8 @@
         <div class="container__form container--signin">
             <div class="form sign_in_form" id="form2">
                 <h2 class="form__title">Sign In</h2>
-                <input type="text" placeholder="ID" class="input"/>
-                <input type="password" placeholder="Password" class="input" />
+                <input type="text" placeholder="ID" class="input" id="sign_in_id" autocomplete="off"/>
+                <input type="password" placeholder="Password" class="input" id="sign_in_pwd" autocomplete="off"/>
                 <a href="#" class="link">Forgot your password?</a>
                 <button class="btn" onclick="ajax_test()">Sign In</button>
             </div>
@@ -38,10 +38,10 @@
         <div class="container__overlay">
             <div class="overlay">
                 <div class="overlay__panel overlay--left">
-                    <button class="btn" id="signIn">Sign In</button>
+                    <button class="btn" id="signIn" onclick="show_sign_in()">Sign In</button>
                 </div>
                 <div class="overlay__panel overlay--right">
-                    <button class="btn" id="signUp">Sign Up</button>
+                    <button class="btn" id="signUp" onclick="show_sign_up()">Sign Up</button>
                 </div>
             </div>
         </div>

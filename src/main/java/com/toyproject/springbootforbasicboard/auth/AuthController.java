@@ -31,4 +31,35 @@ public class AuthController {
 
         return resultMap;
     }
+
+    @RequestMapping(value = "/sign-in", method = {RequestMethod.POST})
+    @ResponseBody
+    public Map<String, Object> signInUser(@RequestBody Map<String, Object> inputData) throws Exception {
+        Map<String, Object> resultMap = new HashMap<>();
+
+        try {
+            resultMap.put("signInfo", authService.signInUserData(inputData));
+            resultMap.put("response", true);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return resultMap;
+    }
+
+    @RequestMapping(value = "/test", method = {RequestMethod.POST})
+    @ResponseBody
+    public Map<String, Object> test() throws Exception {
+        Map<String, Object> resultMap = new HashMap<>();
+
+        try {
+            resultMap.put("RESULT", authService.testAPI());
+            resultMap.put("RESPONSE", true);
+        } catch ( Exception e ) {
+            resultMap.put("RESPONSE", false);
+            System.out.println(e.getMessage());
+        }
+
+        return resultMap;
+    }
 }

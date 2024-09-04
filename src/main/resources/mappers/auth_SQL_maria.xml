@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.toyproject.springbootforbasicboard.auth.service.mapper.AuthMapper">
 
+    <select id="selectAllUsersCount" resultType="int">
+        <![CDATA[
+        SELECT COUNT(*)
+        FROM userInfo
+        ]]>
+    </select>
+
     <select id="selectAllUsers" resultType="java.util.Map">
         <![CDATA[
         SELECT *
@@ -9,28 +16,40 @@
         ]]>
     </select>
 
-    <select id="selectUserCountByUserId" parameterType="String" resultType="int">
+    <select id="selectUserCountByUserId" parameterType="string" resultType="int">
         <![CDATA[
-        SELECT COUNT(*)
+        SELECT
+            COUNT(*)
         FROM userInfo
-        WHERE uiId=#{uiId}
+        WHERE 1=1
+            AND uiId = #{uiId}
         ]]>
     </select>
 
+    <select id="selectUserInfoByUserIdUserPwd" parameterType="java.util.Map" resultType="java.util.Map">
+        <![CDATA[
+        SELECT
+            *
+        FROM userInfo
+        WHERE 1=1
+            AND uiId = #{uiId}
+            AND uiPwd = #{uiPwd}
+        ]]>
+    </select>
 
-    <insert id="insertUserInfo" parameterMap="java.util.Map">
+    <insert id="insertUserInfo" parameterType="java.util.Map">
         <![CDATA[
         INSERT INTO userInfo
             (uiId, uiPwd, uiName, uiPhone, uiEmail, uiCrtDate, uiState, uiAuth)
         VALUES
-            (#{uiId}, #{uiPwd}, #{uiName}, #{uiPhone},#{uiCrtDate}, 1, 1)
+            (#{uiId}, #{uiPwd}, #{uiName}, #{uiPhone}, #{uiEmail},#{uiCrtDate}, 1, 1)
         ]]>
         <selectKey resultType="int" order="AFTER" keyProperty="uiIdx">
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
 
-    <insert id="insertUseHistoryInfo" parameterMap="java.util.Map">
+    <insert id="insertUseHistoryInfo" parameterType="java.util.Map">
         <![CDATA[
         INSERT INTO userHistory
             (uhCrtDate, uiIdx, uhDetail)
@@ -38,8 +57,5 @@
             (#{uhCrtDate}, #{uiIdx}, #{uhDetail})
         ]]>
     </insert>
-
-
-
 
 </mapper>

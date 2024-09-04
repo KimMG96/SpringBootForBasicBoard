@@ -22,8 +22,9 @@ public class AuthImpl implements AuthService {
     @Override
     public Map<String, Object> signUpUserData(Map<String, Object> inputData) throws Exception {
         Map<String, Object> outputData = inputData;
-        System.out.println("result : " + inputData.get("uiId"));
-        int duplicateCnt = authMapper.selectUserCountByUserId(inputData.get("uiId").toString());
+
+        String uiId = outputData.get("uiId").toString();
+        int duplicateCnt = authMapper.selectUserCountByUserId(uiId);
         if(duplicateCnt > 0){
             outputData.put("RESULT_CODE", "DUPLICATE_ID");
             return outputData;
@@ -57,6 +58,24 @@ public class AuthImpl implements AuthService {
         }
 
         outputData.put("RESULT_CODE", "SUCCESS_SIGNUP");
+        return outputData;
+    }
+
+    @Override
+    public Map<String, Object> signInUserData(Map<String, Object> inputData) throws Exception {
+        Map<String, Object> outputData = inputData;
+
+        outputData.put("RESULT_CODE", "SUCCESS_SIGNIN");
+        return outputData;
+    }
+
+    @Override
+    public Map<String, Object> testAPI() throws Exception {
+        Map<String, Object> outputData = new HashMap<>();
+
+        int cnt = authMapper.selectAllUsersCount();
+        outputData.put("COUNT_RESULT", cnt);
+
         return outputData;
     }
 
