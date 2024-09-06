@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!--https://bootswatch.com/litera/-->
-<!--https://jin-coder.tistory.com/entry/%EB%B6%80%ED%8A%B8%EC%8A%A4%ED%8A%B8%EB%9E%A9-%EC%82%AC%EC%9A%A9%EB%B2%95-->
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>SpringBootForBasicBoardPage</title>
     <!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
@@ -11,24 +9,21 @@
 <body>
 <script type="text/javascript" src="/js/board.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/board.css">
-<section class="notice">
+<div class="container">
     <div class="page-title">
         <div class="container">
-            <h3>공지사항</h3>
+            <h3>Board</h3>
         </div>
     </div>
-
     <!-- board seach area -->
     <div id="board-search">
-        <div class="container">
+        <div class="container-board">
             <div class="search-window">
                 <form action="">
                     <div class="search-wrap">
-                        <label for="search" class="blind">공지사항 내용 검색</label>
-                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
-                        <button type="submit" class="btn btn-dark">검색</button>
+                        <input id="search" type="search" name="" placeholder="search here." value="">
+                        <button type="submit" class="btn-board btn-dark">SEARCH</button>
                     </div>
-                    <button class="btn btn_dark"></button>
                 </form>
             </div>
         </div>
@@ -36,13 +31,13 @@
 
     <!-- board list area -->
     <div id="board-list">
-        <div class="container">
+        <div class="container-board">
             <table class="board-table">
                 <thead>
                 <tr>
-                    <th scope="col" class="th-num">번호</th>
-                    <th scope="col" class="th-title">제목</th>
-                    <th scope="col" class="th-date">등록일</th>
+                    <th scope="col" class="th-num">NO</th>
+                    <th scope="col" class="th-title">Title</th>
+                    <th scope="col" class="th-date">Reg-Date</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -70,5 +65,5 @@
             </table>
         </div>
     </div>
-</section>
+</div>
 </body>

@@ -16,6 +16,12 @@ public class AuthController {
     @Autowired
     AuthService authService;
 
+    @RequestMapping(value = "/login-form", method = {RequestMethod.POST})
+    @ResponseBody
+    public String boardLoad() throws Exception {
+        return "index";
+    }
+
     @RequestMapping(value = "/sign-up", method = {RequestMethod.POST})
     @ResponseBody
     public Map<String, Object> signUpUser(@RequestBody Map<String, Object> inputData) throws Exception {

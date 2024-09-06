@@ -13,6 +13,22 @@ function ajax_test() {
     });
 }
 
+function sign_in_success() {
+    console.log(1);
+    $.ajax({
+        url : "/board/load-form",
+        type : "GET",
+        success : function(data) {
+            console.log(data);
+            // $("body > .container").empty().load(data);
+            window.location.href = data;
+        },
+        error : function(err){
+            console.log(err);
+        }
+    });
+}
+
 function sign_in_user() {
     $("#sign_in_id").val($("#sign_in_id").val().replace(/ /gi, ''));
     if($("#sign_in_id").val() === "") {
@@ -32,7 +48,6 @@ function sign_in_user() {
         "uiId" : $("#sign_in_id").val(),
         "uiPwd" : $("#sign_in_pwd").val()
     }
-    console.log(data_val);
 
     $.ajax({
         url : "/auth/sign-in",
@@ -44,14 +59,16 @@ function sign_in_user() {
             if(data.signInInfo.RESULT_CODE === "NONEXISTENT_USER") {
                 alert("it's non-existent user. check your id or password");
                 $("#sign_in_id").focus();
+
             } else if(data.signInInfo.RESULT_CODE === "SUCCESS_SIGNIN") {
                 console.log(data.signInInfo.USER_INFO);
+                sign_in_success();
             }
         },
         error : function(err) {
             console.log(err);
         }
-    })
+    });
 
 }
 
@@ -99,7 +116,6 @@ function sign_up_user(){
         "uiPhone" : $("#sign_up_phone").val(),
         "uiEmail" : $("#sign_up_email").val()
     };
-    console.log(data_val);
 
     $.ajax({
         url : "/auth/sign-up",
@@ -132,7 +148,3 @@ function show_sign_in() {
 function show_sign_up() {
     $(".container").addClass("right-panel-active");
 }
-
-$(function () {
-
-});
