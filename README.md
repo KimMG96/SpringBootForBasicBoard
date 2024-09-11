@@ -29,3 +29,8 @@
   - 클라이언트에서 Rest형태로 서버에 전송되는 데이터를 받기 위해 사용되는 어노테이션<br>
   <br><br>
   
+  <h4>@Valid와 @Validated</h4>
+  <hr>
+  - @Validated는 @Valid 기능을 모두 포함하고 있으며, 추가로 유효성 검토를 할 수 있는 그룹을  지정 가
+  - @Valid는 Java에서 제공, @Validated는 Spring framework에서 제공
+ 
